@@ -1,0 +1,11 @@
+{
+    "project_name": "My Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_description": "A short description of the project.",
+    "author": "Casey Schneider-Mizell",
+    "author_email": "caseysm@gmail.com",
+    "github_username": "ceesem",
+    "initial_version": "0.0.1",
+    "python_version": "3.12"
+}
