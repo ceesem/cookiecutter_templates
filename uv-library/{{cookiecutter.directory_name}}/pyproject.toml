@@ -53,7 +53,8 @@ allow_dirty = false
 commit = true
 message = "v{new_version}"
 commit_args = ""
-post_commit_hooks = [".bmv-post-commit.sh"]
+pre_commit_hooks = ['uv sync', 'git add uv.lock']
+post_commit_hooks = ["./.bmv-post-commit.sh"]
 
 [[tool.bumpversion.files]]
 filename = "src/{{ cookiecutter.project_slug }}/__init__.py"
@@ -78,3 +79,7 @@ help = "Bump the version number in the project. Use with 'patch', 'minor', or 'm
 [tool.poe.tasks.test]
 cmd = "uv run pytest --cov={{ cookiecutter.project_slug }} tests"
 help = "Run pytest with code coverage."
+
+[tool.poe.tasks.doc-preview]
+cmd = "uv run mkdocs serve"
+help = "Preview documentation build locally"
