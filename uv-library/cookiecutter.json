@@ -7,5 +7,8 @@
     "author_email": "caseysm@gmail.com",
     "github_username": "ceesem",
     "initial_version": "0.0.1",
-    "python_version": "3.12"
+    "python_version": "3.12",
+    "_copy_without_render": [
+        ".github/workflows/*.yml"
+    ]
 }

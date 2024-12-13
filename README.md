@@ -10,7 +10,7 @@ The current toolset is:
 4. Version Management : `bump-my-version`. This will be installed within a virtual environment and is managed by `uv`.
 5. Script-aliasing: `poethepoet`. Recommended installation via `pipx install poethepoet`.
 6. Environment Management : `uv` Recommended installation via `pipx install uv`. This will be used to manage the virtual environment for all projects, as well as building, publishing, and testing libraries.
-7. Pre-commit format checking : `pre-commit` used with `ruff`. Recommend installation via `pipx install pre-commit`. After installation, run `pre-commit install` in the root of the project to set up the hooks.
+7. Pre-commit format checking : `pre-commit` used with `ruff`. Pre-commit is run and/or installed and initialized by `uv` after cookiecutter creation. 
 8. Version control: `git`.  If this is not installed, follow instructions online.
 9. Automated testing and documnentation : GitHub Actions. This is handled via files in the `.github/workflows` directory and needs no additional installation.
 
