@@ -3,15 +3,16 @@
 All cookiecutters use `uv` for python environment management in a `pyproject.toml` file, alongside tools for maintenance and testing as needed.
 The current toolset is:
 
-1. Code Formatting : `ruff`
-2. Testing : `pytest`
-3. Documentation : `mkdocs-material` and `mkdocstrings`.
-4. Version Management : `bump-my-version`
-5. Script-aliasing: `poethepoet`
-6. Environment Management : `uv`
-7. Pre-commit format checking : `pre-commit` used with `ruff`.
-8. Version control: `git`
-9. Automated testing and documnentation : GitHub Actions.
+0. Python application management: `pipx`. This is used to install various tools and is a variation of `pip` designed for command-line applications. Rather than installing in a specific environment, it installs in a separate environment and creates a symlink to the executable in the user's path. This is useful for tools that are used across multiple projects and need to be kept up to date. You will only need to install `pipx` once on your computer. See [pipx documentation](https://pipx.pypa.io/stable/) for instructions.
+1. Code Formatting : `ruff`. This will be installed within a virtual environment and is managed by `uv`, although it is also useful to install the VSCode extension for it if you use that editor.
+2. Testing : `pytest`. This will be installed within a virtual environment and is managed by `uv`.
+3. Documentation : `mkdocs-material` and `mkdocstrings`. This will be installed within a virtual environment and is managed by `uv`.
+4. Version Management : `bump-my-version`. This will be installed within a virtual environment and is managed by `uv`.
+5. Script-aliasing: `poethepoet`. Recommended installation via `pipx install poethepoet`.
+6. Environment Management : `uv` Recommended installation via `pipx install uv`. This will be used to manage the virtual environment for all projects, as well as building, publishing, and testing libraries.
+7. Pre-commit format checking : `pre-commit` used with `ruff`. Recommend installation via `pipx install pre-commit`. After installation, run `pre-commit install` in the root of the project to set up the hooks.
+8. Version control: `git`.  If this is not installed, follow instructions online.
+9. Automated testing and documnentation : GitHub Actions. This is handled via files in the `.github/workflows` directory and needs no additional installation.
 
 In all cases, they are designed to make it easy to run notebooks within the directory of the new project via `vscode` with its ability to detect a local python interpreter at the root of the project under the `.venv` directory.
 Each template is oriented toward different use case and have different needs and levels of opinion and automation. The current templates are:
