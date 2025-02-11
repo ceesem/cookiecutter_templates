@@ -4,16 +4,16 @@ All cookiecutters use `uv` for python environment management in a `pyproject.tom
 The current toolset is:
 
 0. Python application management: `pipx`. This is used to install various tools and is a variation of `pip` designed for command-line applications. Rather than installing in a specific environment, it installs in a separate environment and creates a symlink to the executable in the user's path. This is useful for tools that are used across multiple projects and need to be kept up to date. You will only need to install `pipx` once on your computer. See [pipx documentation](https://pipx.pypa.io/stable/) for instructions.
-1. Code Formatting : `ruff`. This will be installed within a virtual environment and is managed by `uv`, although it is also useful to install the VSCode extension for it if you use that editor.
-2. Testing : `pytest`. This will be installed within a virtual environment and is managed by `uv`.
-3. Documentation : `mkdocs-material` and `mkdocstrings`. This will be installed within a virtual environment and is managed by `uv`.
-4. Version Management : `bump-my-version`. This will be installed within a virtual environment and is managed by `uv`.
-5. Script-aliasing: `poethepoet`. Recommended installation via `pipx install poethepoet`.
-6. Environment Management : `uv` Recommended installation via `pipx install uv`. This will be used to manage the virtual environment for all projects, as well as building, publishing, and testing libraries.
-7. Pre-commit format checking : `pre-commit` used with `ruff`. Pre-commit is run and/or installed and initialized by `uv` after cookiecutter creation. 
-8. Version control: `git`.  If this is not installed, follow instructions online.
-9. Automated testing and documnentation : GitHub Actions. This is handled via files in the `.github/workflows` directory and needs no additional installation.
-10. Profiling via `scalene` and `pyinstrument`. These are installed and managed by `uv`. Use `poe profile-all` to profile cpu and memory with `scalene` and `poe profile` to profile cpu in an aesthetically nicer way with `pyinstrument`.
+1. Environment Management : `uv` Recommended installation via `pipx install uv`. This will be used to manage the virtual environment for all projects, as well as building, publishing, and testing libraries.
+2. Code Formatting : `ruff`. This will be installed within a virtual environment and is managed by `uv`, although it is also useful to install the VSCode extension for it if you use that editor.
+3. Testing : `pytest`. This will be installed within a virtual environment and is managed by `uv`.
+4. Documentation : `mkdocs-material` and `mkdocstrings`. This will be installed within a virtual environment and is managed by `uv`.
+5. Version Management : `bump-my-version`. This will be installed within a virtual environment and is managed by `uv`.
+6. Pre-commit format checking : `pre-commit` used with `ruff`. Pre-commit is run and/or installed and initialized by `uv` after cookiecutter creation. 
+7. Version control: `git`.  If this is not installed, follow instructions online.
+8. Automated testing and documnentation : GitHub Actions. This is handled via files in the `.github/workflows` directory and needs no additional installation.
+9. Profiling via `scalene` and `pyinstrument`. These are installed and managed by `uv`. Use `poe profile-all` to profile cpu and memory with `scalene` and `poe profile` to profile cpu in an aesthetically nicer way with `pyinstrument`.
+10. Script-aliasing: `poethepoet`. Recommended installation via `pipx install poethepoet`.
 
 In all cases, they are designed to make it easy to run notebooks within the directory of the new project via `vscode` with its ability to detect a local python interpreter at the root of the project under the `.venv` directory.
 Each template is oriented toward different use case and have different needs and levels of opinion and automation. The current templates are:
