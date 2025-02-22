@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.26.1"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.initial_version }}"
+description = "{{ cookiecutter.project_description }}"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "cloud-files>=4.30.1",
+    "task-queue>=2.14.0",
+    "pandas>=2.2.3",
+    "caveclient>=7.6.0",
+]
+authors = [
+    { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" },
+]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel",
+]
+lint = [
+    "ruff",
+]
+
+[tool.uv]
+default-groups = ["dev", "lint"]
+
+[tool.ruff]
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select=["E9","F63","F7","F82"]
+
+[tool.poe.tasks.insert_tasks]
+cmd = "uv run --env-file $env_file --frozen insert_tasks.py"
+help = "Insert tasks into a taskqueue"
+    [[tool.poe.tasks.insert_tasks.args]]
+    name = "env_file"
+    default = '.env'
+    help = "The dotenv file containing the environment variables"
+    options = ['-e', '--env-file']
+
+[tool.poe.tasks.check_filequeue]
+cmd = "uv run --env-file $env_file --frozen sh check_filequeue.sh"
+help = "Check the status of a taskqueue (filequeue only)"
+    [[tool.poe.tasks.check_filequeue.args]]
+    name = "env_file"
+    default = '.env'
+    help = "The dotenv file containing the environment variables"
+    options = ['-e', '--env-file']
+
+[tool.poe.tasks.launch_worker]
+cmd = "uv run --env-file $env_file --frozen run.py"
+    [[tool.poe.tasks.launch_worker.args]]
+    name = "env_file"
+    default = '.env'
+    help = "The dotenv file containing the environment variables"
+    options = ['-e', '--env-file']
+
+[tool.poe.tasks.reset_queue]
+cmd = "uv run --env-file $env_file --frozen sh reset_filequeue.sh"
+    [[tool.poe.tasks.reset_queue.args]]
+    name = "env_file"
+    default = '.env'
+    help = "The dotenv file containing the environment variables"
+    options = ['-e', '--env-file']
