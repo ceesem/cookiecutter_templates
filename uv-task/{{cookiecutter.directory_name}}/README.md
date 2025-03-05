@@ -154,3 +154,7 @@ If the pod exceeds a resource limit, it will be terminated and a new one created
 Once you are done with your tasks, you should delete your cluster to stop paying for its resources.
 You can do this with `poe delete_cluster`, which will delete the cluster defined in `config/cluster.env`.
 Alternatively, you can delete the cluster manually in the GCP console.
+
+## Acknowledgements
+
+Many thanks to Forrest Collman for piloting task distribution through task-queue, Ben Pedigo for allowing me to shamelessly copy his work in forming the basis of this template, and Will Silversmith for building amazing tools like python-task-queue and cloud-files.
