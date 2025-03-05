@@ -22,3 +22,7 @@ Each template is oriented toward different use case and have different needs and
 * **uv-analysis** : This is designed for a longer term analysis project where data, plots, and notebooks will be saved. It will be checked into version control, but actual pypi releases are not expected. 
 * **uv-oneoff** : This is designed for a one-off analysis or notebook that will not be checked into version control. It is designed to be run in a local environment and not shared with others. It does include a number of basic packages that I use for data analysis and visualization as well as interaction with CAVE. Profiling is not set up here.
 * **uv-task** : This is designed for a queue/worker task deployed through `python-task-queue`. It is designed to help create, distribute, and deploy tasks and workers using Google Kubernetes Engine.
+
+To use any of these cookiecutters, you will need to have `cookiecutter` installed. This can be done via `pipx install cookiecutter`.
+To allow you to use these templates from anywhere, you can symlink them to the `~/.cookiecutters` directory.
+This can be done in the terminal by running `ln -s /path/to/these/cookiecutters/uv_library ~/.cookiecutters/uv-library` (and `uv-analysis`, etc) where `/path/to/these/cookiecutters` is the path to the directory containing the cookiecutters.
