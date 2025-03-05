@@ -36,5 +36,3 @@ kubectl create secret generic secrets \
     --from-file=$HOME/.cloudvolume/secrets/global.daf-apis.com-cave-secret.json \
     --from-file=$HOME/.cloudvolume/secrets/aws-secret.json \
     --from-file=$HOME/.cloudvolume/secrets/google-secret.json \
-
-kubectl apply -f scripts/kube-task.yml

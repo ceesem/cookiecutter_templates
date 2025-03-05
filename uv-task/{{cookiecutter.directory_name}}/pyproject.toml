@@ -44,7 +44,7 @@ cmd = "uv run --env-file $env_file --frozen insert_tasks.py"
 help = "Insert tasks into a taskqueue"
     [[tool.poe.tasks.insert_tasks.args]]
     name = "env_file"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
 
@@ -53,7 +53,7 @@ cmd = "uv run --env-file $env_file --frozen sh check_filequeue.sh"
 help = "Check the status of a taskqueue (filequeue only)"
     [[tool.poe.tasks.check_filequeue.args]]
     name = "env_file"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
 
@@ -61,7 +61,7 @@ help = "Check the status of a taskqueue (filequeue only)"
 cmd = "uv run --env-file $env_file --frozen run.py"
     [[tool.poe.tasks.launch_worker.args]]
     name = "env_file"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
 
@@ -69,7 +69,7 @@ cmd = "uv run --env-file $env_file --frozen run.py"
 cmd = "uv run --env-file $env_file --frozen sh reset_filequeue.sh"
     [[tool.poe.tasks.reset_queue.args]]
     name = "env_file"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
 
@@ -78,22 +78,44 @@ cmd = "uv run --env-file $env_file --frozen sh delete_filequeue.sh"
 help = "Delete a taskqueue (local filequeue only)"
     [[tool.poe.tasks.delete_local_queue.args]]
     name = "env_file"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
 
 [tool.poe.tasks.make_scripts]
-cmd = "./process_template.sh $task_config $cluster_config"
+cmd = "echo bash scripts/process_template.sh $task_config $cluster_config"
 help = "Make scripts for generating and configuring Kubernetes clusters and nodes"
     
     [[tool.poe.tasks.make_scripts.args]]
     name = "task_config"
-    default = '.env'
+    default = 'config/task.env'
     help = "The dotenv file containing the environment variables for the task."
     options = ['-e', '--env-file']
 
     [[tool.poe.tasks.make_scripts.args]]
     name = "cluster_config"
-    default = 'cluster_var.env'
+    default = 'config/cluster.env'
+    help = "The dotenv file containing the environment variables to set up the cluster"
+    options = ['-c', '--cluster-env']
+
+[tool.poe.tasks.launch_cluster]
+cmd = "echo bash scripts/make_cluster.sh"
+help = "Launch a Kubernetes cluster after configuration."
+
+[tool.poe.tasks.apply_task]
+cmd = "echo kubectl apply -f scripts/kube-task.yml"
+help = "Apply a task configuration to a Kubernetes cluster."
+
+[tool.poe.tasks.deploy_task]
+sequence = ["make_scripts ${task_config} ${cluster_config}", "launch_cluster", "apply_task"]
+help = "Apply configuration, launch cluster, and deploy a task to a Kubernetes cluster."
+    [[tool.poe.tasks.deploy_task.args]]
+    name = "task_config"
+    default = 'config/task.env'
+    help = "The dotenv file containing the environment variables for the task."
+    options = ['-e', '--env-file']
+    [[tool.poe.tasks.deploy_task.args]]
+    name = "cluster_config"
+    default = 'config/cluster.env'
     help = "The dotenv file containing the environment variables to set up the cluster"
     options = ['-c', '--cluster-env']
