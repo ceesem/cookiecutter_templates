@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: ${TASK_NAME}
+  name: ${TASK_NAME}
+spec:
+  replicas: ${TASK_REPLICAS}
+  selector:
+    matchLabels:
+      run: ${TASK_NAME}
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 100%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: ${TASK_NAME}
+    spec:
+      containers:
+        - image: ${TASK_DOCKER_IMAGE} 
+          name: ${TASK_NAME}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do uv run --frozen run.py; done"]
+          env:
+            - name: CLOUDSDK_CORE_PROJECT
+              value: ${GOOGLE_PROJECT_NAME}
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/root/.cloudvolume/secrets/google-secret.json"
+            - name: TASKQUEUE_PATH
+              value: ${TASKQUEUE_PATH}
+            - name: TQ_LEASE_SECONDS
+              value: ${TQ_LEASE_SECONDS}
+            - name: CF_CLOUDPATH
+              value: ${CF_CLOUDPATH}
+          resources:
+            requests:
+              memory: "${MEMORY_REQUEST}"
+              cpu: "${CPU_REQUEST}"
+              ephemeral-storage: "${EPHEMERAL_STORAGE_REQUEST}"
+            limits:
+              memory: "${MEMORY_LIMIT}"
+              cpu: "${CPU_LIMIT}"
+              ephemeral-storage: "${EPHEMERAL_STORAGE_LIMIT}"
+          volumeMounts:
+            - name: secrets-volume
+              mountPath: /root/.cloudvolume/secrets
+      dnsPolicy: Default
+      volumes:
+        - name: secrets-volume
+          secret:
+            secretName: secrets
