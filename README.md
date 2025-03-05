@@ -14,6 +14,7 @@ The current toolset is:
 8. Automated testing and documnentation : GitHub Actions. This is handled via files in the `.github/workflows` directory and needs no additional installation.
 9. Profiling via `scalene` and `pyinstrument`. These are installed and managed by `uv`. Use `poe profile-all` to profile cpu and memory with `scalene` and `poe profile` to profile cpu in an aesthetically nicer way with `pyinstrument`.
 10. Script-aliasing: `poethepoet`. Recommended installation via `pipx install poethepoet`.
+11. Large tasks: `python-task-queue`. This adds a simple way to build queues that can be distributed across many workers in the cloud.
 
 In all cases, they are designed to make it easy to run notebooks within the directory of the new project via `vscode` with its ability to detect a local python interpreter at the root of the project under the `.venv` directory.
 Each template is oriented toward different use case and have different needs and levels of opinion and automation. The current templates are:
