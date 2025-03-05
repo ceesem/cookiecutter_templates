@@ -25,4 +25,10 @@ Each template is oriented toward different use case and have different needs and
 
 To use any of these cookiecutters, you will need to have `cookiecutter` installed. This can be done via `pipx install cookiecutter`.
 To allow you to use these templates from anywhere, you can symlink them to the `~/.cookiecutters` directory.
-This can be done in the terminal by running `ln -s /path/to/these/cookiecutters/uv_library ~/.cookiecutters/uv-library` (and `uv-analysis`, etc) where `/path/to/these/cookiecutters` is the path to the directory containing the cookiecutters.
+This can be done in the terminal by running 
+
+```bash
+ln -s /path/to/these/cookiecutters/uv_library ~/.cookiecutters/uv-library
+```
+
+(and `uv-analysis`, etc) where `/path/to/these/cookiecutters` is the path to the directory containing the cookiecutters.
