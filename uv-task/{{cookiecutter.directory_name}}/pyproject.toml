@@ -72,3 +72,28 @@ cmd = "uv run --env-file $env_file --frozen sh reset_filequeue.sh"
     default = '.env'
     help = "The dotenv file containing the environment variables"
     options = ['-e', '--env-file']
+
+[tool.poe.tasks.delete_local_queue]
+cmd = "uv run --env-file $env_file --frozen sh delete_filequeue.sh"
+help = "Delete a taskqueue (local filequeue only)"
+    [[tool.poe.tasks.delete_local_queue.args]]
+    name = "env_file"
+    default = '.env'
+    help = "The dotenv file containing the environment variables"
+    options = ['-e', '--env-file']
+
+[tool.poe.tasks.make_scripts]
+cmd = "./process_template.sh $task_config $cluster_config"
+help = "Make scripts for generating and configuring Kubernetes clusters and nodes"
+    
+    [[tool.poe.tasks.make_scripts.args]]
+    name = "task_config"
+    default = '.env'
+    help = "The dotenv file containing the environment variables for the task."
+    options = ['-e', '--env-file']
+
+    [[tool.poe.tasks.make_scripts.args]]
+    name = "cluster_config"
+    default = 'cluster_var.env'
+    help = "The dotenv file containing the environment variables to set up the cluster"
+    options = ['-c', '--cluster-env']

@@ -11,6 +11,13 @@ session_config.set_session_defaults(
 )
 
 
+def filter_tasks(task_df, cloudpath):
+    """
+    Use this function to filter out tasks that might be already completed.
+    """
+    return task_df
+
+
 @taskqueue.queueable
 def _run_task():
     """

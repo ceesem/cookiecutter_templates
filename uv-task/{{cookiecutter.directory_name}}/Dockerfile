@@ -3,7 +3,7 @@ FROM python:3.12-slim-bookworm
 RUN apt update
 RUN apt-get update && apt-get install -y build-essential pipx
 
-COPY --from=ghcr.io/astral-sh/uv:0.6.1 /uv /bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.6.4 /uv /bin/uv
 
 WORKDIR /app
 
