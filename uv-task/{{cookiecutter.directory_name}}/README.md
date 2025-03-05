@@ -93,7 +93,7 @@ Similar to above, this command will expect `config/task.env` (or your file) to e
 #### Dockerizing workers
 
 The Dockerfile is already set up to build and run a worker Docker without extra configuration.
-Note that the current file is based on a specific version of `uv` (0.6.4) and `python` (3.12), and you should feel free to update or change those as needed.
+Note that the current file is based on the `latest` tag for `uv` and the selected python version, and you should feel free to update or change those to other specific versions if desired.
 To build the Docker image, run `docker buildx build --platform linux/amd64 -t YOUR_TAG .` in the root of the project directory.
 If you are going to use this image for a GKE cluster, your tag should be of the form `username/projectname:tag` (with your dockerhub username) and then pushed to dockerhub via `docker push username/projectname:tag`.
 

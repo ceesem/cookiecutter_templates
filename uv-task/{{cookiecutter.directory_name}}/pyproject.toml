@@ -1,7 +1,3 @@
-[build-system]
-requires = ["hatchling>=1.26.1"]
-build-backend = "hatchling.build"
-
 [project]
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.initial_version }}"
@@ -83,7 +79,7 @@ help = "Delete a taskqueue (local filequeue only)"
     options = ['-e', '--env-file']
 
 [tool.poe.tasks.make_scripts]
-cmd = "echo bash scripts/process_template.sh $task_config $cluster_config"
+cmd = "bash scripts/process_template.sh $task_config $cluster_config"
 help = "Make scripts for generating and configuring Kubernetes clusters and nodes"
     
     [[tool.poe.tasks.make_scripts.args]]
@@ -99,15 +95,15 @@ help = "Make scripts for generating and configuring Kubernetes clusters and node
     options = ['-c', '--cluster-env']
 
 [tool.poe.tasks.launch_cluster]
-cmd = "echo bash scripts/make_cluster.sh"
+cmd = "bash scripts/make_cluster.sh"
 help = "Launch a Kubernetes cluster after configuration."
 
 [tool.poe.tasks.apply_task]
-cmd = "echo kubectl apply -f scripts/kube-task.yml"
+cmd = "kubectl apply -f scripts/kube-task.yml"
 help = "Apply a task configuration to a Kubernetes cluster."
 
 [tool.poe.tasks.deploy_task]
-sequence = ["make_scripts ${task_config} ${cluster_config}", "launch_cluster", "apply_task"]
+sequence = ["make_scripts -e ${task_config} -c ${cluster_config}", "launch_cluster", "apply_task"]
 help = "Apply configuration, launch cluster, and deploy a task to a Kubernetes cluster."
     [[tool.poe.tasks.deploy_task.args]]
     name = "task_config"

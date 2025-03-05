@@ -1,9 +1,9 @@
-FROM python:3.12-slim-bookworm
+FROM python:{{ cookiecutter.python_version }}-slim-bookworm
 
 RUN apt update
 RUN apt-get update && apt-get install -y build-essential pipx
 
-COPY --from=ghcr.io/astral-sh/uv:0.6.4 /uv /bin/uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR /app
 
