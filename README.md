@@ -25,10 +25,13 @@ Each template is oriented toward different use case and have different needs and
 
 To use any of these cookiecutters, you will need to have `cookiecutter` installed. This can be done via `pipx install cookiecutter`.
 To allow you to use these templates from anywhere, you can symlink them to the `~/.cookiecutters` directory.
-This can be done in the terminal by running 
+This can be done in the terminal by navigating to the base of this directory and running:
 
 ```bash
-ln -s /path/to/these/cookiecutters/uv_library ~/.cookiecutters/uv-library
+ln -s uv-library ~/.cookiecutters/uv-library
+ln -s uv-analysis ~/.cookiecutters/uv-analysis
+ln -s uv-oneoff ~/.cookiecutters/uv-oneoff
+ln -s uv-task ~/.cookiecutters/uv-task
 ```
 
-(and `uv-analysis`, etc) where `/path/to/these/cookiecutters` is the path to the directory containing the cookiecutters.
+Then, to create a new project, navigate to the directory where you want the project and simply run `cookiecutter uv-library` (or whatever template you want to use).
