@@ -148,3 +148,9 @@ Ideally, the tasks will fill up the node resources as much as possible, since yo
 Note that resources like memory and CPU can specify both a "request" and a "limit" value.
 Generally speaking, the request values the minimum resources needed to put a pod with a task on a node, while the limit value sets a maximum value.
 If the pod exceeds a resource limit, it will be terminated and a new one created.
+
+### 4. Tearing down your cluster
+
+Once you are done with your tasks, you should delete your cluster to stop paying for its resources.
+You can do this with `poe delete_cluster`, which will delete the cluster defined in `config/cluster.env`.
+Alternatively, you can delete the cluster manually in the GCP console.

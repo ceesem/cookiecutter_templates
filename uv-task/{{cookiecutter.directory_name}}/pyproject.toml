@@ -115,3 +115,7 @@ help = "Apply configuration, launch cluster, and deploy a task to a Kubernetes c
     default = 'config/cluster.env'
     help = "The dotenv file containing the environment variables to set up the cluster"
     options = ['-c', '--cluster-env']
+
+[tool.poe.tasks.delete_cluster]
+cmd = "bash scripts/delete_cluster.sh"
+help = "Delete a Kubernetes cluster. This will delete all resources associated with the cluster!"

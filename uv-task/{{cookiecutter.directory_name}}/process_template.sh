@@ -50,5 +50,10 @@ if ! envsubst < "templates/make_cluster.sh" > "scripts/make_cluster.sh"; then
   exit 1
 fi
 
-echo "Script completed successfully."
+if ! envsubst < "templates/delete_cluster.sh" > "scripts/delete_cluster.sh"; then
+  echo "Error: Failed to run envsubst on templates/delete_cluster.sh"
+  exit 1
+fi
+
+echo "Templates configured successfully."
 exit 0
