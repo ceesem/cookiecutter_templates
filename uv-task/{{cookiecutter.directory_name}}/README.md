@@ -69,7 +69,7 @@ Sometimes tasks will fail, and most likely your `_run_task` function will handle
 Because of this, after an initial run-through, you will often want to start from the same initial state and only add tasks that have not been completed previously.
 To help set up a pattern to do this, there is a `filter_tasks` function in `tasks.py` that takes as an argument the task dataframe and a cloudpath and is intended to return a filtered dataframe that only includes tasks that have not been completed.
 
-For example, if the precense of a file with a name `{root_id}.h5` in the cloudpath is a signal that the task has been completed, you could use the following code:
+For example, if the presence of a file with a name `{root_id}.h5` in the cloudpath is a signal that the task has been completed, you could use the following code:
 
 ```python
 def filter_tasks(task_df, cloudpath):
