@@ -1,4 +1,4 @@
-# A set of cookiecutter files for my own use.
+# A set of cookiecutter files that I like that you may like too (*mutatis mutandis*).
 
 All cookiecutters use `uv` for python environment management in a `pyproject.toml` file, alongside tools for maintenance and testing as needed.
 The current toolset is:
