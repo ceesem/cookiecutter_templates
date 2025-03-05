@@ -114,6 +114,7 @@ Note: The `platform` flags here are useful if you are building on a Mac, but you
 ### 3. Deploying workers to Google Cloud
 
 Now you want to spin up a bunch of workers on a Google Kubernetes Engine cluster to churn through tasks.
+Note that you will need to install `gcloud` [command line tools](https://cloud.google.com/sdk/docs/install) before starting.
 This template helps you define a cluster and deploy workers to it with minimal configuration using both `config/task.env` and `config/cluster.env`.
 
 #### Configuring the cluster and template files
@@ -148,6 +149,11 @@ Ideally, the tasks will fill up the node resources as much as possible, since yo
 Note that resources like memory and CPU can specify both a "request" and a "limit" value.
 Generally speaking, the request values the minimum resources needed to put a pod with a task on a node, while the limit value sets a maximum value.
 If the pod exceeds a resource limit, it will be terminated and a new one created.
+
+#### Redeploying workers
+
+You might need to redeploy workers to the cluster after adjusting the resource allocations or number of tasks.
+Run `poe make_scripts` and `poe apply_task` again to update the cluster with the new configuration.
 
 ### 4. Tearing down your cluster
 
