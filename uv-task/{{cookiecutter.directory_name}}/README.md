@@ -150,6 +150,9 @@ Note that resources like memory and CPU can specify both a "request" and a "limi
 Generally speaking, the request values the minimum resources needed to put a pod with a task on a node, while the limit value sets a maximum value.
 If the pod exceeds a resource limit, it will be terminated and a new one created.
 
+*Tip*: There is no need to set a CPU limit, since you are reserving the whole node and CPU use will eventually come down.
+However, it is useful to set a Memory limit, which will make Kubernetes kill a pod (that is, a worker) if it starts hogging too many resources and strangling the other pods.
+
 #### Redeploying workers
 
 You might need to redeploy workers to the cluster after adjusting the resource allocations or number of tasks.
