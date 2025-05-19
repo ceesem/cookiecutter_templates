@@ -123,7 +123,7 @@ There are two scripts that you will need to run, the first to create the cluster
 Once both `task.env` and `cluster.env` have been defined, you will need to apply these configuration files to the templates in the `templates` directory.
 You can do this with `poe make_scripts`, which uses the default `config/task.env` and `config/cluster.env` files, or `poe make_scripts -e my_task.env -c my_cluster.env` if you are using different environment files.
 These will create `kube-task.yaml` and `make_cluster.sh` files in the `scripts` directory.
-Next, you can run `poe make_cluster` to create the cluster and `poe apply_task` to deploy the task to the cluster.
+Next, you can run `poe launch_cluster` to create the cluster and `poe apply_task` to deploy the task to the cluster.
 The make_cluster command will take several minutes to launch.
 
 You can sequence these commands together with `poe deploy_task`, which will run `make_scripts`, `make_cluster`, and `apply_task` in sequence.

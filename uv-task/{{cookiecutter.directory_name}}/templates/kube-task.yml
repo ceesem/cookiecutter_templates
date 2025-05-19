@@ -33,7 +33,7 @@ spec:
             - name: TASKQUEUE_PATH
               value: ${TASKQUEUE_PATH}
             - name: TQ_LEASE_SECONDS
-              value: ${TQ_LEASE_SECONDS}
+              value: "${TQ_LEASE_SECONDS}"
             - name: CF_CLOUDPATH
               value: ${CF_CLOUDPATH}
           resources:
@@ -43,7 +43,6 @@ spec:
               ephemeral-storage: "${EPHEMERAL_STORAGE_REQUEST}"
             limits:
               memory: "${MEMORY_LIMIT}"
-              cpu: "${CPU_LIMIT}"
               ephemeral-storage: "${EPHEMERAL_STORAGE_LIMIT}"
           volumeMounts:
             - name: secrets-volume

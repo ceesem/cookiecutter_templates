@@ -18,6 +18,7 @@ if [[ ! -r "$2" ]]; then
 fi
 
 # Source environment files with error checking
+set -a
 if ! source "$1"; then
   echo "Error: Failed to source environment file '$1'."
   exit 1
@@ -27,6 +28,7 @@ if ! source "$2"; then
   echo "Error: Failed to source environment file '$2'."
   exit 1
 fi
+set +a
 
 # Check if template files exist
 if [[ ! -r "templates/kube-task.yml" ]]; then
