@@ -126,6 +126,9 @@ These will create `kube-task.yaml` and `make_cluster.sh` files in the `scripts` 
 Next, you can run `poe launch_cluster` to create the cluster and `poe apply_task` to deploy the task to the cluster.
 The make_cluster command will take several minutes to launch.
 
+Please double cehck that the secrets are set up correctly on your computer, such that there is a secret file named for both the CAVE_LOCAL_SERVER and CAVE_GLOBAL_SERVER in your `~/.cloudvolume/secrets` directory.
+They will have the same same contents as one another.
+
 You can sequence these commands together with `poe deploy_task`, which will run `make_scripts`, `make_cluster`, and `apply_task` in sequence.
 If you are using non-default environment files, you can run `poe deploy_task -e my_task.env -c my_cluster.env`.
 

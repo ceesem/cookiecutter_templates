@@ -32,7 +32,7 @@ gcloud container clusters get-credentials --zone ${GOOGLE_ZONE} ${GOOGLE_CLUSTER
 
 # https://kubernetes.io/docs/concepts/configuration/secret/
 kubectl create secret generic secrets \
-    --from-file=$HOME/.cloudvolume/secrets/cave-secret.json \
-    --from-file=$HOME/.cloudvolume/secrets/global.daf-apis.com-cave-secret.json \
+    --from-file=$HOME/.cloudvolume/secrets/${CAVE_GLOBAL_SECRET}-cave-secret.json \
+    --from-file=$HOME/.cloudvolume/secrets/${CAVE_LOCAL_SECRET}-cave-secret.json \
     --from-file=$HOME/.cloudvolume/secrets/aws-secret.json \
     --from-file=$HOME/.cloudvolume/secrets/google-secret.json \
