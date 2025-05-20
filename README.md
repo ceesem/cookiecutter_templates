@@ -22,7 +22,7 @@ Each template is oriented toward different use case and have different needs and
 * **uv-library** : Creating a python library that will be published to PyPI, with testing, documentation, and version management using all of the above tools. Stubs are created for documentation and testing, and the library is set up to be published to PyPI. GitHub actions will run testing against a matrix of python versions and publish the documentation to GitHub pages.
 * **uv-analysis** : This is designed for a longer term analysis project where data, plots, and notebooks will be saved. It will be checked into version control, but actual pypi releases are not expected.
 * **uv-oneoff** : This is designed for a one-off analysis or notebook that will not be checked into version control. It is designed to be run in a local environment and not shared with others. It does include a number of basic packages that I use for data analysis and visualization as well as interaction with CAVE. Profiling is not set up here.
-* **uv-task** : This is designed for a queue/worker task deployed through `python-task-queue`. It is designed to help create, distribute, and deploy tasks and workers using Google Kubernetes Engine.
+* **uv-task** : This is designed for a queue/worker task deployed through `python-task-queue`. It is designed to help create, distribute, and deploy tasks and workers using Google Kubernetes Engine listening to an Amazon SQS queue.
 
 ## Installation and use
 
