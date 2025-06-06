@@ -28,6 +28,7 @@ Each template is oriented toward different use case and have different needs and
 
 To use any of these cookiecutters, you will need to have `cookiecutter` installed. This can be done via `pipx install cookiecutter`.
 To allow you to use these templates from anywhere, you can symlink them to the `~/.cookiecutters` directory.
+Note that you may need to create this directory if it does not yet exist using `mkdir ~/.cookiecutters`.
 This can be done in the terminal by navigating to the base of this directory and running:
 
 ```bash
