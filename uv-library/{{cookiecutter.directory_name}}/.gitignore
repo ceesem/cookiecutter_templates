@@ -110,3 +110,6 @@ var/
 *.orig
 *.sublime-workspace
 
+# Scratch workspace for development
+scratch/
+

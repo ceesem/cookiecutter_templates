@@ -1,0 +1,19 @@
+[project]
+name = "{{ cookiecutter.project_slug }}-scratch"
+version = "0.0.0"
+description = "Scratch workspace for {{ cookiecutter.project_slug }} development"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "{{ cookiecutter.project_slug }}",
+    "ipykernel",
+]
+
+[tool.uv.sources]
+{{ cookiecutter.project_slug }} = { path = "..", editable = true }
+
+[tool.ruff]
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select=["E9","F63","F7","F82"]
