@@ -17,3 +17,15 @@ extend-exclude = ["*.ipynb"]
 
 [tool.ruff.lint]
 select=["E9","F63","F7","F82"]
+
+[tool.poe.tasks.profile-all]
+cmd = "uv run scalene"
+help = "Profile cpu and memory of task with scalene"
+
+[tool.poe.tasks.profile]
+cmd = "uv run pyinstrument -r html"
+help = "Profile cpu of task with pyinstrument"
+
+[tool.poe.tasks.scratch-lab]
+cmd = "uv run --with jupyter --with ipywidgets jupyter lab"
+help = "Start Jupyter Lab in scratch workspace"

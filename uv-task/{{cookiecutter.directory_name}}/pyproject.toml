@@ -119,3 +119,7 @@ help = "Apply configuration, launch cluster, and deploy a task to a Kubernetes c
 [tool.poe.tasks.delete_cluster]
 cmd = "bash scripts/delete_cluster.sh"
 help = "Delete a Kubernetes cluster. This will delete all resources associated with the cluster!"
+
+[tool.poe.tasks.lab]
+cmd = "uv run --with jupyter --with ipywidgets jupyter lab"
+help = "Start Jupyter Lab"
