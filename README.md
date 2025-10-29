@@ -17,12 +17,21 @@ The current toolset is:
 11. Large tasks: `python-task-queue`. This adds a simple way to build queues that can be distributed across many workers in the cloud. This is managed by `uv` in the `uv-task` template.
 
 In all cases, they are designed to make it easy to run notebooks within the directory of the new project via `vscode` with its ability to detect a local python interpreter at the root of the project under the `.venv` directory.
+In addition, you can use `poe` to launch jupyterlab from your environment with `poe lab`.
 Each template is oriented toward different use case and have different needs and levels of opinion and automation. The current templates are:
 
 * **uv-library** : Creating a python library that will be published to PyPI, with testing, documentation, and version management using all of the above tools. Stubs are created for documentation and testing, and the library is set up to be published to PyPI. GitHub actions will run testing against a matrix of python versions and publish the documentation to GitHub pages.
 * **uv-analysis** : This is designed for a longer term analysis project where data, plots, and notebooks will be saved. It will be checked into version control, but actual pypi releases are not expected.
 * **uv-oneoff** : This is designed for a one-off analysis or notebook that will not be checked into version control. It is designed to be run in a local environment and not shared with others. It does include a number of basic packages that I use for data analysis and visualization as well as interaction with CAVE. Profiling is not set up here.
 * **uv-task** : This is designed for a queue/worker task deployed through `python-task-queue`. It is designed to help create, distribute, and deploy tasks and workers using Google Kubernetes Engine listening to an Amazon SQS queue.
+
+## Library scratch environment
+
+The Library template has a `scratch/` directory with its own `pyproject.toml`.
+The idea for this directory is that you might want a separate environment to install not only your package, but non-dependency packages that you intend to use with it.
+For example, you might want to add `matplotlib` to visualize results to ensure the library is behaving well.
+You can add those to `scratch/pyproject.toml` without them interfering with the strict library requirements.
+The library `.venv` can be launched as a kernel from either the main directory or the scratch directory with `poe scratch-lab`.
 
 ## Installation and use
 
