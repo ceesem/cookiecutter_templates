@@ -47,5 +47,5 @@ cmd = "uv run pyinstrument -r html"
 help = "Profile cpu of task with pyinstrument"
 
 [tool.poe.tasks.lab]
-cmd = "uv run --with jupyter --with ipywidgets jupyter lab"
+cmd = "uv run --with jupyterlab --with jupyterlab-vim --with jupyterlab-code-formatter --with jupyter-resource-usage --with jupyterlab-execute-time --with catppuccin-jupyterlab --with ipywidgets jupyter lab --no-browser"
 help = "Start Jupyter Lab"
